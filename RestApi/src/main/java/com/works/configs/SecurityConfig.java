@@ -26,6 +26,7 @@ public class SecurityConfig {
                            .requestMatchers("/product/**").hasRole("product")
                            .requestMatchers("note/**").hasRole("note")
                             .requestMatchers("/customer/**").permitAll()
+                            .requestMatchers("/admin/**").permitAll()
                        )
                 .csrf(csrf -> csrf.disable())
                 .formLogin(formLogin -> formLogin.disable())

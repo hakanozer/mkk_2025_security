@@ -22,3 +22,8 @@ public class Customer {
     @ManyToMany
     private List<Role> roles;
 }
+
+// email = a@a.com
+// password = 12345 -> ' or 1 = 1 --
+// select * from user where email = 'a@a.com' and password = '12345'
+// select * from user where email = 'a@a.com' and password = '' or 1 = 1 --'
