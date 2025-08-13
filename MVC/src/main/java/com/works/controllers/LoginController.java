@@ -1,5 +1,6 @@
 package com.works.controllers;
 
+import com.works.services.TinkEncDec;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,7 @@ import java.util.UUID;
 public class LoginController {
 
     private final HttpServletRequest req;
+    private final TinkEncDec tinkEncDec;
 
     @GetMapping("")
     public String login(Model model){
@@ -27,6 +29,10 @@ public class LoginController {
     @PostMapping("login")
     public String loginUser(@RequestParam String data, @RequestParam String csrf, Model model) {
         Object uuid = req.getSession().getAttribute("uuid");
+        String cipherText = tinkEncDec.encrypt(data);
+        System.out.println("cipherText: " + cipherText);
+        String decrypted = tinkEncDec.decrypt(cipherText);
+        System.out.println("decrypted: " + decrypted);
         if (uuid != null && uuid.toString().equals(csrf)) {
             model.addAttribute("data", data);
             req.getSession().setAttribute("user", data);

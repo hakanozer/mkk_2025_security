@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 @RequiredArgsConstructor
-public class DashboardController {
+public class ProfileController {
 
-    @GetMapping("dashboard")
+    @GetMapping("profile")
     public String login(){
-        return "dashboard";
+        return "profile";
     }
 
 
